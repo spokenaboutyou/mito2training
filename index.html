@@ -21,7 +21,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 .nav-tabs-inner{display:flex;max-width:1400px;margin:0 auto;padding:0 32px;gap:4px;overflow-x:auto;}
 .tab-btn{background:none;border:none;color:rgba(255,255,255,.5);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:14px 20px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;}
 .tab-btn:hover{color:rgba(255,255,255,.8);}
-.tab-btn.active{color:white;border-bottom-color:var(--teal);}
+.tab-btn.active{color:white;font-weight:700;border-bottom:5px solid var(--teal);letter-spacing:.2px;text-shadow:0 0 14px rgba(0,163,180,.35);}
+.tab-btn .tab-arrow{display:none;color:var(--teal);font-size:9px;margin-right:5px;vertical-align:middle;position:relative;top:-1px;}
+.tab-btn.active .tab-arrow{display:inline;}
 
 /* LAYOUT */
 .main{max-width:1400px;margin:0 auto;padding:32px;}
@@ -292,13 +294,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 
 <div class="nav-tabs">
   <div class="nav-tabs-inner">
-    <button class="tab-btn active" onclick="switchTab('howitworks', this)">How It Works</button>
-    <button class="tab-btn" onclick="switchTab('sessionscreen', this)" style="color:rgba(0,163,180,.85);">📋 Session Screen</button>
-    <button class="tab-btn" onclick="switchTab('metrics', this)">Reading the Results</button>
-    <button class="tab-btn" onclick="switchTab('bolt', this)">BOLT Assessment</button>
-    <button class="tab-btn" onclick="switchTab('progression', this)">Progression Flow</button>
-    <button class="tab-btn" onclick="switchTab('scripts', this)">What to Say</button>
-    <button class="tab-btn" onclick="switchTab('resources', this)">📁 Resources</button>
+    <button class="tab-btn active" onclick="switchTab('howitworks', this)"><span class="tab-arrow">▶</span>How It Works</button>
+    <button class="tab-btn" onclick="switchTab('sessionscreen', this)"><span class="tab-arrow">▶</span>📋 Session Screen</button>
+    <button class="tab-btn" onclick="switchTab('metrics', this)"><span class="tab-arrow">▶</span>Reading the Results</button>
+    <button class="tab-btn" onclick="switchTab('bolt', this)"><span class="tab-arrow">▶</span>BOLT Assessment</button>
+    <button class="tab-btn" onclick="switchTab('progression', this)"><span class="tab-arrow">▶</span>Progression Flow</button>
+    <button class="tab-btn" onclick="switchTab('scripts', this)"><span class="tab-arrow">▶</span>What to Say</button>
+    <button class="tab-btn" onclick="switchTab('resources', this)"><span class="tab-arrow">▶</span>📁 Resources</button>
   </div>
 </div>
 
@@ -394,7 +396,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   <div class="ss-grid">
     <!-- HOLD SCREEN -->
     <div>
-      <div class="ss-state-bar" style="background:var(--amber)"><span style="font-size:18px">🔄</span><div><div>Cells Adapting — 3 of 4 Metrics In Range</div><div class="ss-state-sub">Every session is training your cells · Continue current protocol</div></div></div>
+      <div class="ss-state-bar" style="background:var(--amber)"><span style="font-size:18px">🔄</span><div><div>Safe &amp; Effective Session — 3 of 4 Metrics In Range</div><div class="ss-state-sub">Full therapeutic benefit delivered · One metric still building toward target · Continue current protocol</div></div></div>
       <div class="ss-screen-wrap">
         <div style="text-align:center;margin-bottom:16px;">
           <div style="font-size:18px;font-weight:700;color:var(--navy);">MITO<span style="color:var(--teal);">2</span></div>
@@ -414,16 +416,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         </div>
         <div class="ss-perf-lbl">Performance Metrics</div>
         <div class="ss-cards3">
-          <div class="ss-mcard" onclick="ssShow('tth-h')"><div class="ss-dot">5</div><div class="ss-mc-label">📉 Time to Hypoxia</div><div class="ss-mc-val" style="color:var(--amber);font-size:20px">27s</div><div class="ss-mc-badge" style="background:var(--amber-bg);color:var(--amber)">Fast Response</div><div class="ss-mc-detail">C2:39s C3:43s Target:120s+</div></div>
+          <div class="ss-mcard" onclick="ssShow('tth-h')"><div class="ss-dot">5</div><div class="ss-mc-label">📉 Time to Hypoxia</div><div class="ss-mc-val" style="color:var(--amber);font-size:20px">27s</div><div class="ss-mc-badge" style="background:var(--amber-bg);color:var(--amber)">Fast Response</div><div class="ss-mc-detail">C2:39s C3:43s Target:150s+</div></div>
           <div class="ss-mcard" onclick="ssShow('ttr-h')"><div class="ss-dot">6</div><div class="ss-mc-label">📈 Time to Recovery</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">17s</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Strong</div><div class="ss-mc-detail">C1:17s C2:17s C3:17s Target:≤45s</div></div>
           <div class="ss-mcard" onclick="ssShow('saf-h')"><div class="ss-dot">7</div><div class="ss-mc-label">🛡 Safety Events</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">0</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Clean</div><div class="ss-mc-detail">Auto-switches · Target:0</div></div>
         </div>
         <div class="ss-r-panel" onclick="ssShow('rdy-h')">
           <div class="ss-dot">8</div>
-          <div class="ss-r-top"><div><div class="ss-r-title">📊 Your Session Snapshot</div><div class="ss-r-sub">3 of 4 metrics in range — your cells are still adapting</div></div><button class="ss-r-btn" style="background:#f0f0f0;color:var(--text-mid)">Continue Current Protocol</button></div>
+          <div class="ss-r-top"><div><div class="ss-r-title">📊 Your Session Snapshot</div><div class="ss-r-sub">3 of 4 metrics in range — safe and effective session delivered</div></div><button class="ss-r-btn" style="background:#f0f0f0;color:var(--text-mid)">Continue Current Protocol</button></div>
           <div class="ss-r-cells">
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Low Phase SpO₂</div><div style="font-size:12px;font-weight:700;color:var(--green)">82%</div><div class="ss-rc-lbl">82–88%</div></div>
-            <div class="ss-rc ss-rc-f"><div class="ss-rc-lbl">Time to Hypoxia</div><div style="font-size:12px;font-weight:700;color:var(--red)">27s</div><div class="ss-rc-lbl">120s+</div></div>
+            <div class="ss-rc ss-rc-f"><div class="ss-rc-lbl">Time to Hypoxia</div><div style="font-size:12px;font-weight:700;color:var(--red)">27s</div><div class="ss-rc-lbl">150s+</div></div>
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Time to Recovery</div><div style="font-size:12px;font-weight:700;color:var(--green)">17s</div><div class="ss-rc-lbl">≤45s</div></div>
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Safety Events</div><div style="font-size:12px;font-weight:700;color:var(--green)">0</div><div class="ss-rc-lbl">≤1</div></div>
           </div>
@@ -433,7 +435,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     </div>
     <!-- PASSING SCREEN -->
     <div>
-      <div class="ss-state-bar" style="background:var(--green)"><span style="font-size:18px">✅</span><div><div>All Metrics In Range — 4 of 4</div><div class="ss-state-sub">Your cells are responding well · Clinician will review for phase progression</div></div></div>
+      <div class="ss-state-bar" style="background:var(--green)"><span style="font-size:18px">✅</span><div><div>All Metrics In Range — 4 of 4</div><div class="ss-state-sub">Safe and effective session · All metrics confirm the protocol is working well</div></div></div>
       <div class="ss-screen-wrap">
         <div style="text-align:center;margin-bottom:16px;">
           <div style="font-size:18px;font-weight:700;color:var(--navy);">MITO<span style="color:var(--teal);">2</span></div>
@@ -453,7 +455,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         </div>
         <div class="ss-perf-lbl">Performance Metrics</div>
         <div class="ss-cards3">
-          <div class="ss-mcard" onclick="ssShow('tth-p')"><div class="ss-dot">5</div><div class="ss-mc-label">📉 Time to Hypoxia</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">128s</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Passing</div><div class="ss-mc-detail">C2:124s C3:131s C4:128s Target:120s+</div></div>
+          <div class="ss-mcard" onclick="ssShow('tth-p')"><div class="ss-dot">5</div><div class="ss-mc-label">📉 Time to Hypoxia</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">158s</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Passing</div><div class="ss-mc-detail">C2:152s C3:161s C4:158s Target:150s+</div></div>
           <div class="ss-mcard" onclick="ssShow('ttr-p')"><div class="ss-dot">6</div><div class="ss-mc-label">📈 Time to Recovery</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">22s</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Strong</div><div class="ss-mc-detail">C1:20s C2:24s C3:21s C4:23s Target:≤30s</div></div>
           <div class="ss-mcard" onclick="ssShow('saf-p')"><div class="ss-dot">7</div><div class="ss-mc-label">🛡 Safety Events</div><div class="ss-mc-val" style="color:var(--green);font-size:20px">0</div><div class="ss-mc-badge" style="background:var(--green-bg);color:var(--green)">Clean</div><div class="ss-mc-detail">Auto-switches · Target:0</div></div>
         </div>
@@ -462,7 +464,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
           <div class="ss-r-top"><div><div class="ss-r-title">📊 Your Session Snapshot</div><div class="ss-r-sub">All 4 metrics in range — your cells are handling oxygen efficiently</div></div><button class="ss-r-btn" style="background:var(--green);color:white">All Metrics In Range ✓</button></div>
           <div class="ss-r-cells">
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Low Phase SpO₂</div><div style="font-size:12px;font-weight:700;color:var(--green)">84%</div><div class="ss-rc-lbl">82–88%</div></div>
-            <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Time to Hypoxia</div><div style="font-size:12px;font-weight:700;color:var(--green)">128s</div><div class="ss-rc-lbl">120s+</div></div>
+            <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Time to Hypoxia</div><div style="font-size:12px;font-weight:700;color:var(--green)">158s</div><div class="ss-rc-lbl">150s+</div></div>
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Time to Recovery</div><div style="font-size:12px;font-weight:700;color:var(--green)">22s</div><div class="ss-rc-lbl">≤30s</div></div>
             <div class="ss-rc ss-rc-p"><div class="ss-rc-lbl">Safety Events</div><div style="font-size:12px;font-weight:700;color:var(--green)">0</div><div class="ss-rc-lbl">≤1</div></div>
           </div>
@@ -494,7 +496,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         <div class="patient-explain">"This tells us how quickly your body enters the low-oxygen zone. Everyone's a little different — and no matter how fast or slow it happens, your cells are still getting the full benefit of the therapy."</div>
         <div class="zone-row">
           <div class="zone-badge green">PASSING ✔</div>
-          <div class="zone-content green"><div class="zone-range green">120 seconds or more</div><div class="zone-meaning">Controlled, steady drop. The body is entering hypoxia at a good pace.</div><div class="zone-action">→ Supports advancement when all 4 metrics pass consistently.</div></div>
+          <div class="zone-content green"><div class="zone-range green">150 seconds or more</div><div class="zone-meaning">Controlled, steady drop. The body is entering hypoxia at a good pace.</div><div class="zone-action">→ Green metric. All 4 metrics in range confirms a safe and effective session.</div></div>
         </div>
         <div class="zone-row">
           <div class="zone-badge amber">WATCH</div>
@@ -502,7 +504,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         </div>
         <div class="zone-row">
           <div class="zone-badge amber">FAST RESPONSE</div>
-          <div class="zone-content amber"><div class="zone-range amber">Under 60 seconds</div><div class="zone-meaning">Oxygen dropped quickly — very common early on and usually improves on its own. Not a problem.</div><div class="zone-action">→ Stay in current phase. Full benefits still happening. Does not block advancement if other 3 metrics pass.</div></div>
+          <div class="zone-content amber"><div class="zone-range amber">Under 60 seconds</div><div class="zone-meaning">Oxygen dropped quickly — very common early on and usually improves on its own. Not a problem.</div><div class="zone-action">→ Stay in current phase. Full benefits still happening. The other metrics still contribute to a safe and effective session.</div></div>
         </div>
         <div class="metric-note">⚠️ Cycle 1 always shows 0 seconds — this is just the sensor warming up, not a real reading. Always look at Cycles 2 and beyond.</div>
       </div>
@@ -519,7 +521,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         <div class="patient-explain">"Think of this like a workout intensity level for your cells. We want it in a specific range — strong enough to trigger your body's natural healing response, but not more than it can handle comfortably right now."</div>
         <div class="zone-row">
           <div class="zone-badge green">IDEAL ✔</div>
-          <div class="zone-content green"><div class="zone-range green">82–88%</div><div class="zone-meaning">The sweet spot — strong enough to trigger adaptation, comfortable enough to sustain.</div><div class="zone-action">→ Supports advancement when consistent across sessions</div></div>
+          <div class="zone-content green"><div class="zone-range green">82–88%</div><div class="zone-meaning">The sweet spot — strong enough to trigger adaptation, comfortable enough to sustain.</div><div class="zone-action">→ Green metric. We like to see all 4 in this range to confirm a safe and effective session.</div></div>
         </div>
         <div class="zone-row">
           <div class="zone-badge amber">MILD</div>
@@ -544,7 +546,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         <div class="patient-explain">"Once the high-oxygen air kicks in, how quickly did your levels return to normal? This is the single best sign of how well your body is handling the sessions — and it almost always improves over time."</div>
         <div class="zone-row">
           <div class="zone-badge green">STRONG ✔</div>
-          <div class="zone-content green"><div class="zone-range green">45 seconds or less</div><div class="zone-meaning">Excellent bounce-back. The body is handling the session load very well.</div><div class="zone-action">→ Supports advancement when combined with other passing metrics</div></div>
+          <div class="zone-content green"><div class="zone-range green">45 seconds or less</div><div class="zone-meaning">Excellent bounce-back. The body is handling the session load very well.</div><div class="zone-action">→ Green metric. All 4 metrics in range confirms safe and effective session delivery.</div></div>
         </div>
         <div class="zone-row">
           <div class="zone-badge amber">WATCH</div>
@@ -573,7 +575,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         </div>
         <div class="zone-row">
           <div class="zone-badge amber">ACCEPTABLE</div>
-          <div class="zone-content amber"><div class="zone-range amber">1 per cycle (or fewer)</div><div class="zone-meaning">The machine stepped in — one check-in per cycle is acceptable. The system is doing exactly what it's designed to do.</div><div class="zone-action">→ Acceptable. Stay at current level. Aim for 0 consistently before advancing.</div></div>
+          <div class="zone-content amber"><div class="zone-range amber">1 per cycle (or fewer)</div><div class="zone-meaning">The machine stepped in — one check-in per cycle is acceptable. The system is doing exactly what it's designed to do.</div><div class="zone-action">→ Acceptable. Stay at current level. We like to see 0 across all metrics for the clearest safe and effective confirmation.</div></div>
         </div>
         <div class="zone-row">
           <div class="zone-badge red">REVIEW</div>
@@ -587,11 +589,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
     <div style="background:var(--green-bg);border:2px solid var(--green);border-radius:12px;padding:20px 24px;">
       <div style="font-size:18px;font-weight:700;color:var(--green);margin-bottom:8px;">✔ All Metrics In Range</div>
-      <div style="font-size:14px;color:var(--text-mid);">All 4 numbers in range across <strong>3 sessions in a row</strong> = eligible for phase review. Clinician confirms before any phase change.</div>
+      <div style="font-size:14px;color:var(--text-mid);">All 4 metrics in the green zone. This is what we want to see — it confirms the session was safe and effective. Clinician reviews and determines next steps.</div>
     </div>
     <div style="background:#fff8e1;border:2px solid var(--amber);border-radius:12px;padding:20px 24px;">
-      <div style="font-size:18px;font-weight:700;color:var(--amber);margin-bottom:8px;">🔄 Cells Adapting</div>
-      <div style="font-size:14px;color:var(--text-mid);">One or more metrics still building. Stay in current phase. The patient is getting <strong>full therapeutic benefit</strong> every session — no exceptions.</div>
+      <div style="font-size:18px;font-weight:700;color:var(--amber);margin-bottom:8px;">🔄 One Metric Still Building</div>
+      <div style="font-size:14px;color:var(--text-mid);">One or more metrics outside the target range. Stay in current phase. The patient is still getting <strong>full therapeutic benefit</strong> every session — the metrics are there to confirm safety and effectiveness, not to grade the outcome.</div>
     </div>
   </div>
 </div>
@@ -734,7 +736,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
           </tr>
           <tr style="background:#e8f5e9;">
             <td style="padding:12px 16px;font-weight:700;color:var(--green);">31–40 seconds</td>
-            <td style="padding:12px 16px;">Passing (120s+)</td>
+            <td style="padding:12px 16px;">Passing (150s+)</td>
             <td style="padding:12px 16px;color:var(--text-mid);">"Your breathing efficiency is already strong — we may see great numbers from early sessions."</td>
             <td style="padding:12px 16px;color:var(--text-mid);">Strong starting position. Focus on SpO₂ and recovery metrics.</td>
           </tr>
@@ -863,12 +865,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     <div style="display:flex;gap:16px;margin:12px 0;">
       <div style="width:4px;background:var(--phase1);border-radius:2px;margin-left:20px;flex-shrink:0;"></div>
       <div class="criteria-gate" style="flex:1;">
-        <h5>✓ To advance to Conditioning Phase — all 4 must pass for 3 sessions in a row</h5>
-        <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast oxygen dropped:</strong> 120 seconds or more</span></div>
+        <h5>✓ Clinician phase review — when all 4 metrics are consistently in range</h5>
+        <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast oxygen dropped:</strong> 150 seconds or more</span></div>
         <div class="gate-item"><div class="gate-dot"></div><span><strong>Oxygen level during low phase:</strong> 82–88%</span></div>
         <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast they bounced back:</strong> 45 seconds or less</span></div>
-        <div class="gate-item"><div class="gate-dot"></div><span><strong>Safety check-ins:</strong> 0 (1 is okay, but must reach 0 consistently)</span></div>
-        <div class="gate-item" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div class="gate-dot" style="background:var(--navy);"></div><span style="font-weight:600;color:var(--navy);">Clinician reviews and confirms · Condition pathway is selected here</span></div>
+        <div class="gate-item"><div class="gate-dot"></div><span><strong>Safety check-ins:</strong> 0 (1 is okay, but we like to see 0 before the clinician considers a change)</span></div>
+        <div class="gate-item" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div class="gate-dot" style="background:var(--navy);"></div><span style="font-weight:600;color:var(--navy);">Clinician reviews and decides · Condition pathway is selected at this point</span></div>
       </div>
     </div>
     <div style="display:flex;gap:16px;align-items:center;margin:4px 0 8px 0;">
@@ -897,12 +899,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     <div style="display:flex;gap:16px;margin:12px 0;">
       <div style="width:4px;background:var(--phase2);border-radius:2px;margin-left:20px;flex-shrink:0;"></div>
       <div class="criteria-gate" style="flex:1;">
-        <h5>✓ To advance to Optimized Phase — same 4 criteria, 3 sessions in a row</h5>
-        <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast oxygen dropped:</strong> 120 seconds or more</span></div>
+        <h5>✓ Clinician phase review — same 4 metrics, consistently in range</h5>
+        <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast oxygen dropped:</strong> 150 seconds or more</span></div>
         <div class="gate-item"><div class="gate-dot"></div><span><strong>Oxygen level during low phase:</strong> 82–88%</span></div>
         <div class="gate-item"><div class="gate-dot"></div><span><strong>How fast they bounced back:</strong> 45 seconds or less</span></div>
-        <div class="gate-item"><div class="gate-dot"></div><span><strong>Safety check-ins:</strong> 0 consistently (1 per cycle acceptable) · Heart rate stable · All cycles completed</span></div>
-        <div class="gate-item" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div class="gate-dot" style="background:var(--navy);"></div><span style="font-weight:600;color:var(--navy);">Clinician must confirm before advancing</span></div>
+        <div class="gate-item"><div class="gate-dot"></div><span><strong>Safety check-ins:</strong> 0 (1 per cycle acceptable) · Heart rate stable · All cycles completed</span></div>
+        <div class="gate-item" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div class="gate-dot" style="background:var(--navy);"></div><span style="font-weight:600;color:var(--navy);">Clinician must review and decide before any phase change</span></div>
       </div>
     </div>
     <div style="display:flex;gap:16px;align-items:center;margin:4px 0 8px 0;">
@@ -1017,7 +1019,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
       </div>
       <div class="res-body">
         <div class="res-title">Quick Reference Card</div>
-        <div class="res-desc">At-a-glance desk reference covering all four session metrics, threshold zones with color codes, phase protocol specs, and the advancement gate criteria. Designed to be printed and kept at the machine.</div>
+        <div class="res-desc">At-a-glance desk reference covering all four session metrics, threshold zones with color codes, phase protocol specs, and the clinician review criteria. Designed to be printed and kept at the machine.</div>
         <div class="res-meta">Concise · Desk reference · Print-friendly</div>
         <button class="res-btn" onclick="downloadPDF('quickref','Mito2_Quick_Reference_v5.pdf')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -1035,7 +1037,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
       </div>
       <div class="res-body">
         <div class="res-title">Mito2 IHHT User Manual</div>
-        <div class="res-desc">Complete clinical reference covering all four session metrics in depth, the three-phase protocol, EWOT bridge protocol, condition pathways, advancement gate, and safety guidance. Full staff onboarding resource.</div>
+        <div class="res-desc">Complete clinical reference covering all four session metrics in depth, the three-phase protocol, EWOT bridge protocol, condition pathways, clinician review criteria, and safety guidance. Full staff onboarding resource.</div>
         <div class="res-meta">Multi-page · Complete reference · Staff onboarding</div>
         <button class="res-btn" onclick="downloadPDF('manual','Mito2_User_Manual_v5.pdf')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -1142,8 +1144,8 @@ const phaseData={
       ['How often','2–3× per week (3 recommended)'],
       ['How long','4 weeks minimum (6–8 typical)'],['Movement','No — resting only'],
     ],
-    criteria:['How fast oxygen dropped: 120 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 is ideal. 1 per cycle is acceptable — must reach 0 consistently before advancing.'],
-    note:'All 4 must pass consistently across 3 sessions in a row. Clinician reviews before advancing. Condition pathway is selected at this point.'
+    criteria:['How fast oxygen dropped: 150 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 is ideal. 1 per cycle is acceptable — clinician reviews before any phase change.'],
+    note:'All 4 metrics consistently in the green zone. Clinician reviews and decides on any phase change. Condition pathway is selected at this point.'
   },
   2:{color:'p2',num:'Phase 2',name:'Conditioning Phase',
     purpose:'Building on the foundation · More volume · Body has proven it can handle the dose',
@@ -1154,8 +1156,8 @@ const phaseData={
       ['Heart rate ceiling','(220 minus age) × 0.80'],
       ['How often','2–3× per week'],['How long','4–6 weeks typical'],['Movement','No — resting only'],
     ],
-    criteria:['How fast oxygen dropped: 120 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 consistently (1 per cycle acceptable) · Heart rate stable · All cycles completed'],
-    note:'Not meeting criteria → stay in Conditioning Phase. Clinician must confirm before advancing.'
+    criteria:['How fast oxygen dropped: 150 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 (1 per cycle acceptable) · Heart rate stable · All cycles completed'],
+    note:'Not meeting criteria → stay in Conditioning Phase. Clinician must review and confirm before any phase change.'
   },
   3:{color:'p3',num:'Phase 3',name:'Optimized Phase',
     purpose:'Maximum dose · Movement eligible · The body has earned this through consistent data',
@@ -1169,7 +1171,7 @@ const phaseData={
       ['Important note','Heavy exercise, HIIT, and sprints not recommended during hypoxic phases'],
       ['Safety floor','Machine auto-switches to high O₂ if level hits 80%'],
     ],
-    criteria:['Same 4 criteria apply for Movement Version eligibility','0 safety check-ins across 3 consecutive resting Optimized sessions','Recovery time consistently 45 seconds or less','Clinician confirms movement is appropriate for this patient'],
+    criteria:['Same 4 metrics apply for Movement Version eligibility','0 safety check-ins across 3 consecutive resting Optimized sessions','Recovery time 45 seconds or less — confirmed across multiple sessions','Clinician confirms movement is appropriate for this patient'],
     note:'Optimized Phase is the peak phase. Movement or cardio is optional — clinician determines appropriate intensity. Not for new patients under any circumstances.'
   }
 };
@@ -1243,12 +1245,12 @@ const scriptGroups=[
       {title:"'Why is that red?' — general",who:'Coach, Clinician',
         script:"Red just means that number landed outside the range we're targeting for this phase. It doesn't mean something went wrong — it's just the screen telling us where your cells are today. Think of it like a gauge on a dashboard. It's information that helps us make sure you're on exactly the right protocol. Nothing here is an emergency.",
         note:"Say this first before explaining the specific metric. Reframe the color before the patient gets anxious."},
-      {title:"'What does Cells Adapting mean?'",who:'Coach, Clinician',
-        script:"Cells Adapting just means one of the four numbers is still building toward the target range. It's not a setback — it's exactly what this phase is designed for. Your cells are learning how to handle oxygen more efficiently, and that takes a few sessions. Every session you do, even this one, is moving that process forward. We just stay at the same level until the numbers tell us you're ready for more.",
-        note:"Never apologize for a Cells Adapting result. Present it as expected and entirely normal."},
+      {title:"'What does it mean when one number is still building?'",who:'Coach, Clinician',
+        script:"It means one of the four metrics is still working toward the target range — which is completely expected. The metrics are there to confirm the session was safe and effective. When all four are in range, we have the clearest picture. When one is still building, we stay at the same level because it's working. Every session you do is still delivering the full therapeutic benefit. There's no setback here — just the protocol doing exactly what it's designed to do.",
+        note:"Never apologize for a session where one metric is still building. Present it as expected and entirely normal."},
       {title:"'What does All Metrics In Range mean?'",who:'Coach, Clinician',
-        script:"All Metrics In Range means all four numbers landed right where we want them today — your cells are handling oxygen efficiently across the board. It's a strong session. We track this over a few sessions in a row, and your clinician will let you know when it's time to talk about moving forward. One great session is a good sign — consistency is what we're really looking for.",
-        note:"Don't promise phase advancement from a single session. Always say 'we track this over a few sessions.'"},
+        script:"All Metrics In Range means all four numbers landed right where we want them today — this confirms the session was safe and effective. It's what we like to see. Your clinician tracks this over time and will let you know when they want to review your protocol. One strong session is a great sign — what matters is the pattern over time.",
+        note:"Don't frame this as unlocking a phase change. Frame it as confirmation of a well-delivered, safe, effective session."},
       {title:"'Should I be worried about any of these numbers?'",who:'Coach, Clinician',
         script:"Nothing on this screen should worry you. Every number here is information — it tells us where your cells are in the adaptation process, and we use it to make sure you're on exactly the right protocol. The only time we pause and check in with a clinician is if a number is consistently outside range over several sessions — and even then it just means we fine-tune things. You're in good hands.",
         note:"If a patient is visibly anxious, slow down. Walk through each card one at a time. Reassurance first, explanation second."},
@@ -1266,13 +1268,13 @@ const scriptGroups=[
     scripts:[
       {title:"Time to Hypoxia — red or amber (Fast Response or Watch)",who:'Coach, Clinician',
         script:"Time to Hypoxia is how long it took for your oxygen to drop into the low zone after the low-oxygen air started. When it's in the amber zone it means your oxygen dropped faster than the ideal target — we call it Fast Response when it's under 60 seconds. It's one of the most common things we see, especially early in the program, and it almost always improves on its own as your cells adapt. It doesn't change the fact that you're getting the full benefit of the session.",
-        note:"Fast Response does not block phase advancement if the other 3 metrics are in range. Make sure the patient knows this."},
+        note:"Fast Response does not affect the other 3 metrics. Make sure the patient understands the session was still safe and effective."},
       {title:"'What is Fast Response?' — patient noticed the badge",who:'Coach',
         script:"Fast Response is the label we use when your oxygen drops into the low zone pretty quickly — under 60 seconds. It means your body is very sensitive to this stimulus right now, which is actually a sign your cells are paying attention. It's not a problem. It usually smooths out on its own over a few sessions as your system gets more familiar with the protocol.",
         note:"Always say 'Fast Response.' Never say 'High Sensitivity' — it sounds alarming."},
       {title:"Low Phase SpO₂ — red (oxygen too low, below 82%)",who:'Coach, Clinician',
         script:"Your oxygen level during the low phase dipped a little lower than we want right now. The target range is 82 to 88 percent — that's the window where your body gets the full cellular stimulus without being pushed too hard. When it goes below that, it just tells us the dose might be a touch strong for where your cells are right now. Your clinician will take a look before your next session to make sure the setting is exactly right.",
-        note:"Red SpO₂ (below 82%) requires clinician review before next session. Do not advance phase."},
+        note:"Red SpO₂ (below 82%) requires clinician review before next session."},
       {title:"Low Phase SpO₂ — amber (89–90%, too mild)",who:'Coach, Clinician',
         script:"Your oxygen level during the low phase came in just a bit above the ideal range — 89 to 90 percent rather than 82 to 88. That means the session was slightly gentler on the cellular stimulus side. You still got benefit — it was just a lighter dose than we're targeting. Your clinician may fine-tune the settings so your next session hits that sweet spot.",
         note:"High SpO₂ is not dangerous — it just means the stimulus was mild. Frame it as a calibration note."},
@@ -1284,7 +1286,7 @@ const scriptGroups=[
         note:"Never say 'alarm.' Say 'Safety Check-In' or 'the safety system stepped in.' One per cycle is acceptable. More than one consistently requires clinician review."},
       {title:"Safety Check-In — more than one per cycle",who:'Coach, Clinician',
         script:"The safety system stepped in a few times during the session. That's the machine doing exactly its job — protecting you. When it happens that often it just tells us the current dose is a bit strong for where your cells are right now. We'll flag this for your clinician and they'll take a look at your settings before next time. Nothing to worry about — this is precisely the kind of information we're designed to catch.",
-        note:"More than 1 per cycle consistently = clinician review required. Do not advance phase."},
+        note:"More than 1 per cycle consistently = clinician review required."},
       {title:"'What does heart rate on the screen mean?'",who:'Coach',
         script:"Your heart rate is there so we can make sure your cardiovascular system is comfortable throughout the session. We're looking for it to stay below a certain ceiling — not because anything dangerous is happening, just because it tells us your body isn't working too hard. If it stays within range, that's a good sign your body handled the session well.",
         note:"Keep the heart rate explanation simple. It's a comfort marker, not a primary therapeutic metric."},
@@ -1309,15 +1311,15 @@ const scriptGroups=[
       {title:"'What does the next phase mean for me?'",who:'Coach, Clinician',
         script:"The next phase just means a slightly longer session — your cells will spend a bit more time in the low-oxygen zone each cycle. Adaptive is about 16 minutes of low-oxygen time total, Conditioning is 20, and Optimized is 24. The experience feels very similar — you're still sitting comfortably, breathing through the mask. It's just a deeper stimulus as your body is ready for it.",
         note:"Frame phase progression as a natural next step, not a reward. Keep the focus on the body's readiness."},
-      {title:"'What happens if I keep getting Cells Adapting?'",who:'Coach, Clinician',
-        script:"You just stay in the current phase a little longer — and that's completely fine. There's no deadline, and there's no harm in your cells taking more time to adapt. The therapy is still working every single session. Some people move through phases quickly, others take more time, and both are completely normal. When your numbers are consistently in range, your clinician will talk with you about what's next.",
-        note:"Never make a patient feel like they're failing or falling behind. Emphasize that the process works on its own timeline."},
+      {title:"'What happens if one metric keeps being out of range?'",who:'Coach, Clinician',
+        script:"You just stay in the current phase a little longer — and that's completely fine. There's no deadline, and there's no harm in the process taking more time. The therapy is still working every single session. The metrics are there to confirm safety and effectiveness, not to pass or fail you. Some people's numbers settle in quickly, others take more time, and both are completely normal. Your clinician keeps an eye on the pattern and will talk with you when they want to review.",
+        note:"Never make a patient feel like they're falling behind. Emphasize that the metrics confirm safe delivery, not that they gate a reward."},
       {title:"After an All Metrics In Range session",who:'Coach, Clinician',
         script:"Great session today. Let me show you these numbers. Your oxygen level during the low phase averaged right in the ideal range — your body got a strong, well-targeted stimulus. Your recovery time was excellent, which tells us your body is bouncing back efficiently. And the safety system didn't need to step in at all. This is exactly what we're looking for.",
         note:"Always walk through the session screen with the patient. Never leave them with numbers they don't understand."},
-      {title:"After a Cells Adapting session — one metric still building",who:'Coach, Clinician',
+      {title:"After a session with one metric still building",who:'Coach, Clinician',
         script:"Really solid session today — three out of four numbers are right where we want them. The one we're still watching is how quickly your oxygen drops at the start of each cycle. That almost always improves on its own over a few sessions, and it doesn't change the fact that your body is getting the full benefit of the therapy right now. Same plan for next time.",
-        note:"Never frame a Cells Adapting session as a setback. The patient is still getting full therapeutic benefit."},
+        note:"Never frame a session with one metric building as a setback. The patient is still getting full therapeutic benefit."},
       {title:"Explaining High O₂ Only mode",who:'Coach, Clinician',
         script:"Today we're going to use the High O₂ only mode — you'll be breathing enriched oxygen the whole time, without the low-oxygen phase. It's a gentler version that still supports your body's oxygen delivery and energy. Think of it as a recovery session. Once your body is feeling ready again, we'll bring back the full protocol. Today this is exactly the right approach.",
         note:"Frame EWOT as intentional and appropriate — never as a downgrade or a step backward."},
@@ -1525,7 +1527,7 @@ const ssD={
     {icon:'💬',bg:'#fffde7',label:'Say to patient',text:'"Your oxygen dropped pretty quickly today — that just means your body is very responsive right now. It\'s completely normal, and you\'re still getting all the benefits of the session."'}
   ]},
   'tth-p':{color:'#2E7D32',tag:'Card 5 — Time to Hypoxia',name:'How Fast Oxygen Dropped',rows:[
-    {icon:'🔍',bg:'#e8f4f8',label:'What it means',text:'128 seconds — passing the 120-second threshold. Controlled, steady entry into hypoxia.'},
+    {icon:'🔍',bg:'#e8f4f8',label:'What it means',text:'158 seconds — in the target range (150s+). Controlled, steady entry into hypoxia.'},
     {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'This metric is passing. Combined with the other 3 passing, this is an All Metrics In Range session.'},
     {icon:'💬',bg:'#fffde7',label:'Say to patient',text:'"Your oxygen dropped in a nice steady, controlled way today — that\'s exactly what we\'re looking for."'}
   ]},
@@ -1546,12 +1548,12 @@ const ssD={
   ]},
   'saf-p':{color:'#2E7D32',tag:'Card 7 — Safety Events',name:'Safety Check-Ins',rows:[
     {icon:'🔍',bg:'#e8f4f8',label:'What it means',text:'Zero safety events — the session ran entirely within safe limits. Ideal outcome.'},
-    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Document normally. Zero events consistently is a requirement for phase advancement.'},
+    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Document normally. Zero events is what we like to see — it contributes to the clearest confirmation of a safe and effective session.'},
     {icon:'💬',bg:'#fffde7',label:'Say to patient',text:'"Zero safety check-ins — your body stayed well within range the whole time. Clean session."'}
   ]},
   'saf-1':{color:'#E65100',tag:'Card 7 — Safety Events',name:'Safety Check-In Occurred',rows:[
     {icon:'🔍',bg:'#e8f4f8',label:'What it means',text:'The safety feature stepped in once during a cycle — it automatically switched to high-oxygen air when the level reached the floor. This is the system working as designed.'},
-    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Acceptable — 1 per cycle is okay. Stay at current protocol. Note which cycle and document. Must reach 0 consistently before advancing to next phase.'},
+    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Acceptable — 1 per cycle is okay. Stay at current protocol. Note which cycle and document. We like to see 0 across all metrics for the clearest safe and effective confirmation.'},
     {icon:'💬',bg:'#fffde7',label:'Say to patient',text:'"The system stepped in once during one of your cycles — that\'s perfectly fine. It\'s the built-in safety feature doing exactly what it\'s designed to do."'}
   ]},
   'rdy-h':{color:'#1A6B8A',tag:'Card 8 — Session Snapshot',name:'Your Session Snapshot',rows:[
@@ -1561,7 +1563,7 @@ const ssD={
   ]},
   'rdy-p':{color:'#2E7D32',tag:'Card 8 — Session Snapshot',name:'Your Session Snapshot',rows:[
     {icon:'🔍',bg:'#e8f4f8',label:'What it means',text:'All 4 metrics in range. Your cells are processing oxygen efficiently. If this holds across 3 consecutive sessions, the clinician will review for phase progression.'},
-    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Note this as a strong session. Do not promise phase advancement — that requires 3 consecutive sessions and clinician confirmation.'},
+    {icon:'✅',bg:'#e8f5e9',label:'What to do',text:'Note this as a strong session confirming safe and effective delivery. Clinician reviews the pattern over time and determines next steps.'},
     {icon:'💬',bg:'#fffde7',label:'Say to patient',text:'"All four numbers look great today — your cells are really handling the oxygen well. We track this over a few sessions, and your clinician will let you know when it\'s time to move forward."'}
   ]},
 };
