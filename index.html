@@ -301,6 +301,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     <button class="tab-btn" onclick="switchTab('progression', this)"><span class="tab-arrow">▶</span>Progression Flow</button>
     <button class="tab-btn" onclick="switchTab('scripts', this)"><span class="tab-arrow">▶</span>What to Say</button>
     <button class="tab-btn" onclick="switchTab('resources', this)"><span class="tab-arrow">▶</span>📁 Resources</button>
+    <button class="tab-btn" onclick="switchTab('screening', this)"><span class="tab-arrow">▶</span>🩺 Patient Screening</button>
   </div>
 </div>
 
@@ -1101,6 +1102,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
       </div>
     </div>
 
+
+    <!-- Patient Intake Screening Checklist -->
+    <div class="res-card">
+      <div class="res-icon" style="background:linear-gradient(135deg,#1B2A4A,#00A3B4);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <div class="res-body">
+        <div class="res-title">Patient Intake Screening Checklist</div>
+        <div class="res-desc">Staff intake form with yes/no checkboxes for all absolute contraindications and use-caution conditions. Includes clinician sign-off block. Print and retain in patient file.</div>
+        <div class="res-meta">1 page · Print-ready · Staff use only · New patient intake</div>
+        <button class="res-btn" onclick="downloadPDF('screening','Mito2_Intake_Screening_Checklist.pdf')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </button>
+      </div>
+    </div>
+
   </div><!-- end grid -->
 </div>
 
@@ -1111,6 +1131,48 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
   <div class="ss-tipbox" onclick="event.stopPropagation()">
     <div class="ss-tip-head" id="ss-th"><div class="ss-tip-tag" id="ss-tt"></div><div class="ss-tip-name" id="ss-tn"></div></div>
     <div class="ss-tip-body" id="ss-tb"></div>
+  </div>
+</div>
+
+
+<!-- ══ TAB: PATIENT SCREENING ══ -->
+<div id="tab-screening" class="tab-content">
+  <div class="section-title">Patient Screening</div>
+  <div class="section-sub">Review before every new patient intake · Clinician confirms final eligibility</div>
+
+  <!-- Two-tier banner -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 8px;">
+    <div style="background:var(--red-bg,#FFEBEE);border:2px solid var(--red,#C62828);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:22px">🚫</span>
+      <div>
+        <div style="font-weight:700;color:var(--red,#C62828);font-size:13px;letter-spacing:.3px;text-transform:uppercase;">Absolute Contraindications</div>
+        <div style="font-size:12px;color:var(--text-mid);margin-top:2px;">Do not proceed with full IHHT — see EWOT note for each</div>
+      </div>
+    </div>
+    <div style="background:#fff8e1;border:2px solid var(--amber);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:22px">⚠️</span>
+      <div>
+        <div style="font-weight:700;color:var(--amber);font-size:13px;letter-spacing:.3px;text-transform:uppercase;">Use Caution</div>
+        <div style="font-size:12px;color:var(--text-mid);margin-top:2px;">Clinician review required before starting — modifications may apply</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABSOLUTE CONTRAINDICATIONS -->
+  <div style="font-size:11px;font-weight:700;color:var(--red,#C62828);letter-spacing:2px;text-transform:uppercase;margin:22px 0 10px;">Absolute Contraindications — Full IHHT</div>
+  <div id="sc-absolute"></div>
+
+  <!-- USE CAUTION -->
+  <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:2px;text-transform:uppercase;margin:28px 0 10px;">Use Caution — Clinician Review Required</div>
+  <div id="sc-caution"></div>
+
+  <!-- Footer note -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-top:24px;display:flex;gap:12px;align-items:flex-start;">
+    <span style="font-size:20px;flex-shrink:0">📋</span>
+    <div style="font-size:13px;color:var(--text-mid);line-height:1.6;">
+      <strong style="color:var(--navy);">Clinician always makes the final eligibility determination.</strong> This list is a screening guide for staff — not a substitute for clinical judgment. When in doubt, defer to the clinician before starting any session.
+      <br><br>A standalone <strong>staff intake checklist</strong> with sign-off lines is available in the <button onclick="document.querySelector('[onclick*=resources]').click()" style="background:none;border:none;color:var(--teal);font-weight:700;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;">📁 Resources tab →</button>
+    </div>
   </div>
 </div>
 
@@ -1722,6 +1784,245 @@ function downloadPDF(key, filename) {
     });
   });
 }
+
+// ── SCREENING TAB DATA & RENDER ──
+const screeningAbsolute = [
+  {
+    condition: 'Recent myocardial infarction or unstable angina',
+    timeframe: 'Within 12 weeks of MI · Any active unstable angina',
+    why: 'Hypoxia increases cardiac oxygen demand on already-compromised myocardium. May precipitate ischemia or arrhythmia.',
+    ewot: 'Clinician determines — hyperoxia-only may support recovery. Medical clearance required before any session.',
+    ewotOk: null,
+    icon: '❤️'
+  },
+  {
+    condition: 'Severe pulmonary hypertension',
+    timeframe: 'Group 1 PAH · Severe Group 3 PH (right heart involvement)',
+    why: 'Hypoxia causes pulmonary vasoconstriction, raises pulmonary artery pressure, and can precipitate acute right heart failure.',
+    ewot: 'Do not use EWOT without specialist clearance — pulmonary vascular disease requires cardiopulmonary specialist review.',
+    ewotOk: false,
+    icon: '🫁'
+  },
+  {
+    condition: 'Uncontrolled seizure disorder',
+    timeframe: 'Active epilepsy not adequately managed with medication',
+    why: 'Intermittent hypoxia can lower the seizure threshold and may precipitate breakthrough seizures.',
+    ewot: 'EWOT may be appropriate — hyperoxia alone does not carry the same seizure risk. Clinician determines.',
+    ewotOk: true,
+    icon: '🧠'
+  },
+  {
+    condition: 'Decompensated heart failure',
+    timeframe: 'NYHA Class IV · EF < 25% · Active fluid overload',
+    why: 'Hemodynamically unstable patients cannot safely tolerate hypoxic stimulus or the cardiovascular demand it creates.',
+    ewot: 'Clinician + cardiology input required. Some decompensated patients may tolerate EWOT as supportive therapy.',
+    ewotOk: null,
+    icon: '💓'
+  },
+  {
+    condition: 'Active internal hemorrhage or severe bleeding disorder',
+    timeframe: 'Any active bleed · Hemodynamic instability',
+    why: 'Systemic hemodynamic compromise is incompatible with a therapy that reduces inspired oxygen.',
+    ewot: 'Neither IHHT nor EWOT until patient is stabilized and bleeding is controlled.',
+    ewotOk: false,
+    icon: '🩸'
+  },
+  {
+    condition: 'Pregnancy',
+    timeframe: 'Any trimester',
+    why: 'No sufficient research on effects of controlled hypoxia on fetal development. Precautionary contraindication.',
+    ewot: 'Limited research exists. Clinician determination required — some practitioners use EWOT cautiously with monitoring.',
+    ewotOk: null,
+    icon: '🤰'
+  },
+  {
+    condition: 'Acute stroke or TIA',
+    timeframe: 'Within 12 weeks of acute event',
+    why: 'Brain requires stable oxygenation during acute recovery. Hypoxia can expand ischemic penumbra and worsen outcomes.',
+    ewot: 'Clinician determines with neurology input. Enriched oxygen is used in acute stroke settings but requires medical oversight.',
+    ewotOk: null,
+    icon: '🧩'
+  },
+  {
+    condition: 'Active acute illness with systemic compromise',
+    timeframe: 'Fever > 38.5°C (101.3°F) · Severe infection · Acute respiratory distress',
+    why: 'Physiological instability. Hypoxic stimulus adds additional stress to a system already under acute strain.',
+    ewot: 'Defer all sessions until acute illness resolves. EWOT may be appropriate for mild upper respiratory illness — clinician determines.',
+    ewotOk: null,
+    icon: '🌡️'
+  },
+  {
+    condition: 'Severe anemia',
+    timeframe: 'Hemoglobin < 8 g/dL',
+    why: 'Oxygen transport is critically limited. Reducing inspired O₂ further compromises tissue delivery.',
+    ewot: 'EWOT appropriate at clinician discretion — enriched oxygen supports delivery without the hypoxic burden.',
+    ewotOk: true,
+    icon: '🔴'
+  },
+  {
+    condition: 'Active HIF-driven malignancy (untreated)',
+    timeframe: 'Renal cell carcinoma · Glioblastoma · Certain lung cancers · Consult oncologist for others',
+    why: 'HIF-1α activation may stimulate tumor angiogenesis and promote growth in HIF-dependent cancers. Research is evolving.',
+    ewot: 'Oncologist consultation required for all active cancer. EWOT (hyperoxia alone) does not activate HIF-1α and may support quality of life — oncologist must determine.',
+    ewotOk: null,
+    icon: '🔬'
+  },
+];
+
+const screeningCaution = [
+  {
+    condition: 'Moderate to severe COPD',
+    detail: 'Mild COPD (FEV1 > 50%, SpO₂ ≥ 94% at rest) may tolerate and benefit from IHHT',
+    action: 'Assess resting SpO₂ and respiratory reserve before starting. Begin with shorter hypoxic cycles.',
+    ewot: 'EWOT is often the preferred starting protocol for moderate-severe COPD. Transition to full IHHT only with clinician clearance.',
+    icon: '💨'
+  },
+  {
+    condition: 'Stable cardiovascular disease',
+    detail: 'Compensated heart failure · Stable CAD · Treated arrhythmias · Controlled hypertrophic cardiomyopathy',
+    action: 'Confirm stability with treating physician. Research supports IHHT benefit in stable cardiac patients — start with close monitoring.',
+    ewot: 'EWOT is a lower-risk starting option when cardiac stability is uncertain. Transition to full IHHT with clinical confirmation.',
+    icon: '🫀'
+  },
+  {
+    condition: 'Controlled epilepsy on medication',
+    detail: 'Seizure-free for ≥ 6 months on stable anti-seizure therapy',
+    action: 'Hypoxia can lower seizure threshold even in controlled epilepsy. Start conservatively with shorter cycles and careful monitoring. Neurologist awareness recommended.',
+    ewot: 'Consider EWOT as initial protocol. Transition to full IHHT only after confirmed tolerance over multiple sessions.',
+    icon: '⚡'
+  },
+  {
+    condition: 'Resting SpO₂ below 94%',
+    detail: 'Baseline saturation 90–93% at rest',
+    action: 'Patient may drop rapidly into the review zone. Start with shorter hypoxic cycles, closer monitoring, and conservative safety floor settings.',
+    ewot: 'EWOT recommended as starting protocol until baseline response is established.',
+    icon: '📉'
+  },
+  {
+    condition: 'Poorly controlled hypertension',
+    detail: 'Resting SBP consistently > 160 mmHg',
+    action: 'Hypoxia activates the sympathetic nervous system and can transiently raise BP. Stabilize blood pressure with treating physician before starting IHHT.',
+    ewot: 'EWOT appropriate while awaiting BP stabilization — does not carry the same sympathetic stimulus.',
+    icon: '📈'
+  },
+  {
+    condition: 'Moderate anemia',
+    detail: 'Hemoglobin 8–10 g/dL',
+    action: 'Monitor SpO₂ response closely. Oxygen-carrying capacity is reduced — patient may drop faster than typical. Start with conservative cycles.',
+    ewot: 'EWOT as initial protocol is reasonable. Can transition to full IHHT once SpO₂ response pattern is established.',
+    icon: '🩺'
+  },
+  {
+    condition: 'Labile type 1 diabetes or poorly controlled blood glucose',
+    detail: 'HbA1c > 9% · Frequent hypoglycemic episodes · Insulin pump users',
+    action: 'Hypoxia can affect glucose metabolism. Check blood glucose before and after every session. Have glucose source available during sessions.',
+    ewot: 'EWOT appropriate with the same blood glucose monitoring protocol.',
+    icon: '🍬'
+  },
+  {
+    condition: 'Recent surgery',
+    detail: 'Within 8 weeks of major procedure · Active wound healing',
+    action: 'Depends on procedure type and healing status. Clinician must assess systemic recovery and wound healing before starting any hypoxic therapy.',
+    ewot: 'EWOT generally appropriate during recovery — avoids hypoxic stress while supporting tissue oxygenation.',
+    icon: '🩹'
+  },
+  {
+    condition: 'Implanted cardiac devices',
+    detail: 'Pacemaker · ICD · LVAD',
+    action: 'No direct contraindication known for pacemakers or ICDs. Confirm device is functioning normally. For LVADs, cardiology clearance required.',
+    ewot: 'Appropriate with same monitoring. Confirm device compatibility with treating team.',
+    icon: '🔋'
+  },
+  {
+    condition: 'History of spontaneous pneumothorax',
+    detail: 'Resolved pneumothorax with confirmed radiological clearance',
+    action: 'Ensure complete resolution before starting. Monitor respiratory comfort during early sessions — any chest discomfort warrants immediate pause.',
+    ewot: 'Lower risk but same respiratory monitoring applies.',
+    icon: '🫧'
+  },
+  {
+    condition: 'Severe claustrophobia or significant mask intolerance',
+    detail: 'Extreme anxiety with mask · Prior panic during respiratory therapy',
+    action: 'Trial mask tolerance before committing to a session protocol. High anxiety significantly limits therapeutic response and increases session risk.',
+    ewot: 'EWOT uses the same mask — if mask is the issue, both protocols are affected. Address mask tolerance first.',
+    icon: '😰'
+  },
+  {
+    condition: 'Post-COVID or long COVID with unknown baseline',
+    detail: 'Active recovery · Unestablished SpO₂ pattern · Exercise intolerance',
+    action: 'Research supports IHHT for long COVID recovery — but establish baseline SpO₂ pattern first. Monitor initial sessions very closely for unusual drops or recovery patterns.',
+    ewot: 'EWOT is an appropriate gentle starting point for post-COVID patients with significant exercise intolerance.',
+    icon: '🦠'
+  },
+];
+
+function renderScreeningCards(data, containerId, isAbsolute) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const borderColor = isAbsolute ? 'var(--red,#C62828)' : 'var(--amber)';
+  const bgColor = isAbsolute ? '#fff5f5' : '#fffdf5';
+  const labelColor = isAbsolute ? 'var(--red,#C62828)' : 'var(--amber)';
+
+  container.innerHTML = data.map((item, i) => {
+    const ewotBadge = item.ewotOk === true
+      ? `<span style="background:#E8F5E9;color:#2E7D32;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;">EWOT ✓ May Apply</span>`
+      : item.ewotOk === false
+      ? `<span style="background:#FFEBEE;color:#C62828;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;">EWOT ✗ Also Avoid</span>`
+      : `<span style="background:#E3F2FD;color:#1565C0;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;">EWOT — Clinician Determines</span>`;
+
+    if (isAbsolute) {
+      return `
+      <div style="border:1.5px solid ${borderColor};border-radius:10px;background:${bgColor};margin-bottom:10px;overflow:hidden;">
+        <div style="display:flex;align-items:flex-start;padding:14px 16px;gap:12px;cursor:pointer;" onclick="toggleSCDetail('sc${i}')">
+          <span style="font-size:20px;flex-shrink:0;margin-top:1px;">${item.icon}</span>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;color:var(--navy);font-size:14px;">${item.condition}${ewotBadge}</div>
+            <div style="font-size:12px;color:#888;margin-top:3px;">${item.timeframe}</div>
+          </div>
+          <span id="sc${i}-arr" style="color:#aaa;font-size:12px;flex-shrink:0;margin-top:4px;">▾</span>
+        </div>
+        <div id="sc${i}" style="display:none;padding:0 16px 14px 48px;border-top:1px solid #fde0e0;">
+          <div style="font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.6;"><strong style="color:var(--navy);">Why:</strong> ${item.why}</div>
+          <div style="background:#E0F7FA;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:10px 12px;font-size:12.5px;color:var(--text-mid);line-height:1.6;">
+            <strong style="color:var(--teal);">💧 EWOT / High O₂ Only:</strong> ${item.ewot}
+          </div>
+        </div>
+      </div>`;
+    } else {
+      return `
+      <div style="border:1.5px solid ${borderColor};border-radius:10px;background:${bgColor};margin-bottom:10px;overflow:hidden;">
+        <div style="display:flex;align-items:flex-start;padding:14px 16px;gap:12px;cursor:pointer;" onclick="toggleSCDetail('sc-c${i}')">
+          <span style="font-size:20px;flex-shrink:0;margin-top:1px;">${item.icon}</span>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;color:var(--navy);font-size:14px;">${item.condition}</div>
+            <div style="font-size:12px;color:#888;margin-top:3px;">${item.detail}</div>
+          </div>
+          <span id="sc-c${i}-arr" style="color:#aaa;font-size:12px;flex-shrink:0;margin-top:4px;">▾</span>
+        </div>
+        <div id="sc-c${i}" style="display:none;padding:0 16px 14px 48px;border-top:1px solid #fff0c0;">
+          <div style="font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.6;"><strong style="color:var(--navy);">What to do:</strong> ${item.action}</div>
+          <div style="background:#E0F7FA;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:10px 12px;font-size:12.5px;color:var(--text-mid);line-height:1.6;">
+            <strong style="color:var(--teal);">💧 EWOT / High O₂ Only:</strong> ${item.ewot}
+          </div>
+        </div>
+      </div>`;
+    }
+  }).join('');
+}
+
+function toggleSCDetail(id) {
+  const el = document.getElementById(id);
+  const arr = document.getElementById(id + '-arr');
+  if (!el) return;
+  const open = el.style.display === 'block';
+  el.style.display = open ? 'none' : 'block';
+  if (arr) arr.textContent = open ? '▾' : '▴';
+}
+
+// Init screening tab
+renderScreeningCards(screeningAbsolute, 'sc-absolute', true);
+renderScreeningCards(screeningCaution, 'sc-caution', false);
+
 
 function closePDFModal() {
   const modal = document.getElementById('pdf-modal');
