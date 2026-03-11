@@ -431,7 +431,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
           <div class="dose-stat-row"><span class="dose-key">Total session time</span><span class="dose-val p1">~28–35 min</span></div>
           <div class="dose-stat-row"><span class="dose-key">How long</span><span class="dose-val p1">4–8 weeks</span></div>
           <div class="dose-stat-row"><span class="dose-key">How often</span><span class="dose-val p1">2–3× per week</span></div>
-          <div class="dose-stat-row"><span class="dose-key">Movement</span><span class="dose-val p1">No — resting only</span></div>
+          <div class="dose-stat-row"><span class="dose-key">Movement</span><span class="dose-val p1">Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.</span></div>
         </div>
       </div>
       <div class="dose-bar-wrap">
@@ -450,7 +450,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
           <div class="dose-stat-row"><span class="dose-key">Total session time</span><span class="dose-val p2">~35–40 min</span></div>
           <div class="dose-stat-row"><span class="dose-key">How long</span><span class="dose-val p2">4–6 weeks</span></div>
           <div class="dose-stat-row"><span class="dose-key">How often</span><span class="dose-val p2">2–3× per week</span></div>
-          <div class="dose-stat-row"><span class="dose-key">Movement</span><span class="dose-val p2">No — resting only</span></div>
+          <div class="dose-stat-row"><span class="dose-key">Movement</span><span class="dose-val p2">Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.</span></div>
         </div>
       </div>
       <div class="dose-bar-wrap">
@@ -462,12 +462,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
         </div>
         <div style="padding:12px 20px 0;background:white;"><div class="dose-bar-track"><div class="dose-bar-fill p3"></div></div></div>
         <div class="dose-bar-body">
-          <div class="dose-plain">Maximum dose — the body has proven it's ready. Six cycles at full dose. Movement or cardio can be added once stable — clinician determines appropriate intensity.</div>
+          <div class="dose-plain">Maximum dose — the body has proven it's ready. Six cycles at full dose. Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.</div>
           <div class="dose-stat-row"><span class="dose-key">Cycles</span><span class="dose-val p3">6 cycles</span></div>
           <div class="dose-stat-row"><span class="dose-key">Low O₂</span><span class="dose-val p3">4 min</span></div>
           <div class="dose-stat-row"><span class="dose-key">High O₂</span><span class="dose-val p3">3 min</span></div>
           <div class="dose-stat-row"><span class="dose-key">Total session time</span><span class="dose-val p3">~42–47 min</span></div>
-          <div class="dose-stat-row"><span class="dose-key">Movement / Cardio</span><span class="dose-val p3" style="color:var(--amber);font-weight:600;">Clinician determines intensity</span></div>
+          <div class="dose-stat-row"><span class="dose-key">Movement / Cardio</span><span class="dose-val p3">Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.</span></div>
         </div>
       </div>
     </div>
@@ -1351,7 +1351,7 @@ const phaseData={
       ['Safety floor','Machine auto-switches to high O₂ if level hits 80%'],
       ['Heart rate ceiling','(220 minus age) × 0.80'],
       ['How often','2–3× per week (3 recommended)'],
-      ['How long','4 weeks minimum (6–8 typical)'],['Movement','No — resting only'],
+      ['How long','4 weeks minimum (6–8 typical)'],['Movement','Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.'],
     ],
     criteria:['How fast oxygen dropped: 120 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 is ideal. 1 per cycle is acceptable — must reach 0 consistently before advancing.'],
     note:'All 4 must pass consistently across 3 sessions in a row. Clinician reviews before advancing. Condition pathway is selected at this point.'
@@ -1363,25 +1363,24 @@ const phaseData={
       ['Total session time','~35–40 minutes'],['Low-oxygen exposure per session','~20 minutes'],
       ['Safety floor','Machine auto-switches to high O₂ if level hits 80%'],
       ['Heart rate ceiling','(220 minus age) × 0.80'],
-      ['How often','2–3× per week'],['How long','4–6 weeks typical'],['Movement','No — resting only'],
+      ['How often','2–3× per week'],['How long','4–6 weeks typical'],['Movement','Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.'],
     ],
     criteria:['How fast oxygen dropped: 120 seconds or more','Oxygen level during low phase: 82–88%','How fast they bounced back: 45 seconds or less','Safety check-ins: 0 consistently (1 per cycle acceptable) · Heart rate stable · All cycles completed'],
     note:'Not meeting criteria → stay in Conditioning Phase. Clinician must confirm before advancing.'
   },
   3:{color:'p3',num:'Phase 3',name:'Optimized Phase',
-    purpose:'Maximum dose · Movement eligible · The body has earned this through consistent data',
+    purpose:'Maximum dose · The body has earned this through consistent data',
     settings:[
       ['Cycles','6'],
       ['Low O₂ per cycle','4:00 min'],
       ['High O₂ per cycle','3:00 min'],
       ['Total session time','~42–47 minutes'],['Low-oxygen exposure per session','~24 minutes'],
-      ['Movement / Cardio','Clinician determines appropriate intensity'],
-      ['Movement type','Cardio — clinician determines appropriate intensity'],
+      ['Movement / Cardio','Start with resting sessions. Movement introduced gradually based on client response and clinician discretion.'],
       ['Important note','Heavy exercise, HIIT, and sprints not recommended during hypoxic phases'],
       ['Safety floor','Machine auto-switches to high O₂ if level hits 80%'],
     ],
-    criteria:['Same 4 criteria apply for Movement Version eligibility','0 safety check-ins across 3 consecutive resting Optimized sessions','Recovery time consistently 45 seconds or less','Clinician confirms movement is appropriate for this patient'],
-    note:'Optimized Phase is the peak phase. Movement or cardio is optional — clinician determines appropriate intensity. Not for new patients under any circumstances.'
+    criteria:['0 safety check-ins across 3 consecutive resting Optimized sessions','Recovery time consistently 45 seconds or less','Clinician confirms movement is appropriate for this patient'],
+    note:'Optimized Phase is the peak phase. Start with resting sessions. Movement introduced gradually based on client response and clinician discretion. Not for new patients under any circumstances.'
   }
 };
 
@@ -1546,7 +1545,7 @@ const scriptGroups=[
         note:"Frame this as something the patient can positively influence. Not a warning — an opportunity."},
       {title:"'Can I exercise before or after a session?'",who:'Coach, Clinician',
         script:"Light activity before a session is fine — a walk, some gentle stretching. We'd avoid anything intense like heavy lifting or a hard cardio workout right before, since that can affect how your body responds during the low-oxygen phases. After a session, listen to your body — most people feel good and can go about their day normally. Your clinician may have specific guidance based on your phase.",
-        note:"In the Optimized Phase, movement during the high-oxygen phases may be prescribed. Clinician determines this."},
+        note:"Start with resting sessions. Movement introduced gradually based on client response and clinician discretion."},
       {title:"'Should I eat before my session?'",who:'Coach, Front Desk',
         script:"We recommend not coming in on a completely empty stomach — a light meal an hour or two before is ideal. You don't want to be too full either, since some people find that uncomfortable during the mask portion. Hydration is the most important thing — make sure you've had plenty of water before you arrive.",
         note:"Keep it simple: light meal 1–2 hours before, well-hydrated."},
