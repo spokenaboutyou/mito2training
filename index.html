@@ -592,6 +592,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
       </div>
       <div class="metric-body">
         <div class="patient-explain">"This tells us how quickly your body enters the low-oxygen zone. Everyone's a little different — and no matter how fast or slow it happens, your cells are still getting the full benefit of the therapy."</div>
+        <div style="background:var(--bg-light);border-left:4px solid var(--navy);padding:12px 16px;border-radius:0 8px 8px 0;font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:16px;"><strong style="color:var(--navy);">📘 Staff context:</strong> Think of it like gas mileage. A body that holds on to available oxygen longer — under this challenge, on this day — is like a car that goes further on a tank of gas. A body that drops quickly burns through it faster. That's what this number reflects in this session, and it's what we track as the program progresses.</div>
         <div class="zone-row">
           <div class="zone-badge green">PASSING ✔</div>
           <div class="zone-content green"><div class="zone-range green">120 seconds or more</div><div class="zone-meaning">Controlled, steady drop. The body is entering hypoxia at a good pace.</div><div class="zone-action">→ Supports advancement when all 4 metrics pass consistently.</div></div>
@@ -1475,7 +1476,7 @@ const scriptGroups=[
     bg:'var(--bg-periwinkle)',
     scripts:[
       {title:"Time to Hypoxia — red or amber (Fast Response or Watch)",who:'Coach, Clinician',
-        script:"Time to Hypoxia is how long it took for your oxygen to drop into the low zone after the low-oxygen air started. When it's in the amber zone it means your oxygen dropped faster than the ideal target — we call it Fast Response when it's under 60 seconds. It's one of the most common things we see, especially early in the program, and it almost always improves on its own as your cells adapt. It doesn't change the fact that you're getting the full benefit of the session.",
+        script:"Time to Hypoxia is how long it took for your oxygen to drop into the low zone after the low-oxygen air started. When it's in the amber zone it means your oxygen dropped faster than the ideal target — we call it Fast Response when it's under 60 seconds. It's one of the most common things we see, especially early in the program, and it almost always improves on its own as your cells adapt. It doesn't change the fact that you're getting the full benefit of the session. And keep in mind — this number is a snapshot of today's session. It can shift based on sleep, hydration, even the time of day. What we really care about is the trend over time.",
         note:"Fast Response does not block phase advancement if the other 3 metrics are in range. Make sure the patient knows this."},
       {title:"'What is Fast Response?' — patient noticed the badge",who:'Coach',
         script:"Fast Response is the label we use when your oxygen drops into the low zone pretty quickly — under 60 seconds. It means your body is very sensitive to this stimulus right now, which is actually a sign your cells are paying attention. It's not a problem. It usually smooths out on its own over a few sessions as your system gets more familiar with the protocol.",
