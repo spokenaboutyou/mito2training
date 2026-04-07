@@ -370,7 +370,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
     <button class="tab-btn" onclick="switchTab('metrics', this)">Reading the Results</button>
     <button class="tab-btn" onclick="switchTab('bolt', this)">BOLT Assessment</button>
     <button class="tab-btn" onclick="switchTab('scripts', this)">What to Say</button>
-    <button class="tab-btn" onclick="switchTab('resources', this)">📁 Resources</button>
   </div>
 </div>
 
@@ -946,94 +945,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text
 </div>
 
 
-<div id="tab-resources" class="tab-content">
-  <div class="section-title">Resources</div>
-  <div class="section-sub">Download reference materials for staff use and patient education</div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-top:24px;">
-
-    <!-- BOLT Assessment Handout -->
-    <div class="res-card">
-      <div class="res-icon" style="background:linear-gradient(135deg,#2E9186,#3DAA9D);">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-        </svg>
-      </div>
-      <div class="res-body">
-        <div class="res-title">BOLT Score Assessment</div>
-        <div class="res-desc">2-page staff reference covering the Body Oxygen Level Test — what it measures, how to administer it, score interpretation, and how BOLT predicts Time to Hypoxia on the session screen.</div>
-        <div class="res-meta">2 pages · Staff reference · Intake &amp; progress tracking</div>
-        <button class="res-btn" onclick="downloadPDF('bolt','BOLT_Assessment_Handout_v2.pdf')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          View PDF
-        </button>
-      </div>
-    </div>
-
-    <!-- Hormesis Diagram -->
-    <div class="res-card">
-      <div class="res-icon" style="background:linear-gradient(135deg,var(--green-dark),var(--green-light));">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>
-      </div>
-      <div class="res-body">
-        <div class="res-title">How IHHT Trains Your Cells</div>
-        <div class="res-desc">Branded hormesis diagram explaining why controlled hypoxic stress creates stronger cells — with drawn cell illustrations, Mito2 branding, and IHHT-specific labels. Ideal for patient education and clinic display.</div>
-        <div class="res-meta">1 page · Landscape · Patient education &amp; staff reference</div>
-        <button class="res-btn" onclick="downloadPDF('hormesis','Mito2_Hormesis_Diagram.pdf')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          View PDF
-        </button>
-      </div>
-    </div>
-
-    <!-- Quick Reference -->
-    <div class="res-card">
-      <div class="res-icon" style="background:linear-gradient(135deg,#7B4FA8,#9466C8);">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
-        </svg>
-      </div>
-      <div class="res-body">
-        <div class="res-title">Quick Reference Card</div>
-        <div class="res-desc">At-a-glance desk reference covering all four session metrics, threshold zones with color codes, phase protocol specs, and the advancement gate criteria. Designed to be printed and kept at the machine.</div>
-        <div class="res-meta">Concise · Desk reference · Print-friendly</div>
-        <button class="res-btn" onclick="downloadPDF('quickref','Mito2_Quick_Reference_v5.pdf')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          View PDF
-        </button>
-      </div>
-    </div>
-
-    <!-- User Manual -->
-    <div class="res-card">
-      <div class="res-icon" style="background:linear-gradient(135deg,#C0392B,#C87A2A);">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        </svg>
-      </div>
-      <div class="res-body">
-        <div class="res-title">Mito2 IHHT User Manual</div>
-        <div class="res-desc">Complete clinical reference covering all four session metrics in depth, the three-phase protocol, EWOT bridge protocol, condition pathways, advancement gate, and safety guidance. Full staff onboarding resource.</div>
-        <div class="res-meta">Multi-page · Complete reference · Staff onboarding</div>
-        <button class="res-btn" onclick="downloadPDF('manual','Mito2_User_Manual_v5.pdf')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          View PDF
-        </button>
-      </div>
-    </div>
-
-  </div><!-- end grid -->
-
-  <div style="margin-top:32px;padding:18px 22px;background:white;border-radius:12px;border:1.5px solid var(--border);border-left:3px solid var(--teal);font-size:12px;color:var(--text-mid);line-height:1.7;">
-    <strong style="color:var(--teal);display:block;margin-bottom:4px;">Staff Use Only</strong>
-    These documents are internal clinical references. For patient-facing materials, adapt language to your clinic's protocols. Content reflects current Mito2 IHHT system specifications.
-  </div>
-</div>
 
 </div><!-- end .main -->
 
